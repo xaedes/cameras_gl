@@ -46,11 +46,11 @@ namespace cameras_gl {
             return static_cast<const CameraViewInterface&>(m_view);
         }
         
-        inline projection_type& access_projection() { return m_projection; }
-        inline view_type& access_view() { return m_view; }
+        inline projection_type& accessProjection() { return m_projection; }
+        inline view_type& accessView() { return m_view; }
         
-        inline const projection_type& access_projection() const { return m_projection; }
-        inline const view_type& access_view() const { return m_view; }
+        inline const projection_type& accessProjection() const { return m_projection; }
+        inline const view_type& accessView() const { return m_view; }
         
     protected:
         projection_type m_projection;
@@ -58,13 +58,3 @@ namespace cameras_gl {
     };
 
 } // namespace cameras_gl
-
-
-    const CameraProjectionInterface& Camera::projection() const
-    {
-        return static_cast<const CameraProjectionInterface&>(m_projection);
-    };
-    const CameraViewInterface& Camera::view() const
-    {
-        return static_cast<const CameraViewInterface&>(m_view);
-    };

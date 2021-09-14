@@ -47,9 +47,12 @@ namespace cameras_gl {
             glm::ivec2 viewportSize
         );
 
+        inline float& accessFov()       { return m_fov; }
+        inline float& accessNearPlane() { return m_nearPlane; }
+        inline float& accessFarPlane()  { return m_farPlane; }
+        inline glm::ivec2& accessViewportSize()  { return m_viewportSize; }
+
         void update();
-
-
 
     protected:
 

@@ -22,7 +22,7 @@ namespace cameras_gl {
         
         virtual void setViewportSize(glm::ivec2 size) = 0;
 
-        float aspectRatio() const;
+        virtual float aspectRatio() const;
         
     };
 
