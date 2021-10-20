@@ -25,10 +25,12 @@ namespace cameras_gl {
         inline const glm::vec3& target() const { return m_target; }
         inline const glm::vec3& angles() const { return m_angles; }
         inline float distance() const { return m_distance; }
+        inline bool swapYZ() const { return m_swapYZ; }
 
         void setTarget(const glm::vec3& target);
         void setAngles(const glm::vec3& angles);
         void setDistance(float distance);
+        void setSwapYZ(bool swapYZ);
         void set(
             const glm::vec3& target, 
             const glm::vec3& angles, 
@@ -38,6 +40,7 @@ namespace cameras_gl {
         inline glm::vec3& accessTarget()   { return m_target;   }
         inline glm::vec3& accessAngles()   { return m_angles;   }
         inline float& accessDistance()     { return m_distance; }
+        inline bool& accessSwapYZ()        { return m_swapYZ;   }
 
         void update();
 
@@ -47,6 +50,8 @@ namespace cameras_gl {
         float m_distance;
 
         glm::vec3 m_position;
+
+        bool m_swapYZ;
 
         glm::mat4 m_world_from_camera = glm::mat4(1);
         glm::mat4 m_camera_from_world = glm::mat4(1);

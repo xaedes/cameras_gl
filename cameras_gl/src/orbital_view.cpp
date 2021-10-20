@@ -22,6 +22,7 @@ namespace cameras_gl {
         : m_target(target)
         , m_angles(angles)
         , m_distance(distance)
+        , m_swapYZ(false)
     {}
 
     OrbitalView::~OrbitalView()
@@ -59,6 +60,12 @@ namespace cameras_gl {
         m_distance = distance;
         update();
     }
+    
+    void OrbitalView::setSwapYZ(bool swapYZ)
+    {
+        m_swapYZ = swapYZ;
+        update();
+    }
 
     void OrbitalView::set(
         const glm::vec3& target, 
@@ -74,13 +81,22 @@ namespace cameras_gl {
 
     void OrbitalView::update()
     {
-       m_world_from_camera = (
+        m_world_from_camera = (
             glm::translate(m_target)
             * (glm::eulerAngleY(m_angles.z))
             * (glm::eulerAngleX(-m_angles.y))
             * (glm::eulerAngleZ(m_angles.x))
             * glm::translate(glm::vec3(0, 0, m_distance))
         );
+        if (m_swapYZ)
+        {
+            m_world_from_camera = glm::mat4(
+                1, 0, 0, 0,
+                0, 0, 1, 0,
+                0, 1, 0, 0,
+                0, 0, 0, 1
+            ) * m_world_from_camera;
+        }
         m_camera_from_world = glm::affineInverse(m_world_from_camera);
         m_position = m_world_from_camera * glm::vec4(0, 0, 0, 1);
     }
