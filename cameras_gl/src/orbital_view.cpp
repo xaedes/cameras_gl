@@ -93,7 +93,7 @@ namespace cameras_gl {
             m_world_from_camera = glm::mat4(
                 1, 0, 0, 0,
                 0, 0, 1, 0,
-                0, 1, 0, 0,
+                0, -1, 0, 0,
                 0, 0, 0, 1
             ) * m_world_from_camera;
         }
