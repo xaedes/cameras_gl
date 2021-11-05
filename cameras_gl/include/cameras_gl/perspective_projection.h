@@ -10,10 +10,8 @@ namespace cameras_gl {
     class PerspectiveProjection : public CameraProjectionInterface
     {
     public:
-        static glm::mat4 perspective_inverse(
-            const glm::mat4& image_from_camera
-        );
-        
+        // PerspectiveProjection() = default;
+        PerspectiveProjection(const PerspectiveProjection& other) = default;
         PerspectiveProjection(
             float fov_radians = 45 * glm::pi<float>() / 180, 
             float nearPlane = 0.8f, 
@@ -23,6 +21,7 @@ namespace cameras_gl {
         virtual ~PerspectiveProjection();
 
         virtual glm::mat4 mat() const override;
+        virtual bool hasInverse() const override;
         virtual glm::mat4 matInverse() const override;
 
         float fov() const;
@@ -52,7 +51,7 @@ namespace cameras_gl {
         inline float& accessFarPlane()  { return m_farPlane; }
         inline glm::ivec2& accessViewportSize()  { return m_viewportSize; }
 
-        void update();
+        virtual void update();
 
     protected:
 
@@ -62,7 +61,6 @@ namespace cameras_gl {
         glm::ivec2 m_viewportSize; 
 
         glm::mat4 m_image_from_camera;
-        glm::mat4 m_camera_from_image;
     };
 
 } // namespace cameras_gl

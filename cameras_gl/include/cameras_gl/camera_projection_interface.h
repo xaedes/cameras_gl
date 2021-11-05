@@ -16,7 +16,8 @@ namespace cameras_gl {
         inline operator glm::mat4() { return mat(); }
 
         virtual glm::mat4 mat() const = 0;
-        virtual glm::mat4 matInverse() const;
+        virtual bool hasInverse() const = 0; // ortho has inverse, perspective not
+        virtual glm::mat4 matInverse() const = 0;
         virtual glm::ivec2 viewportSize() const = 0;
         virtual glm::vec2 viewportSize_vec2() const = 0;
         

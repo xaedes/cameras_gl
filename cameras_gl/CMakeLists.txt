@@ -14,7 +14,9 @@ add_library(
     src/first_person_view.cpp
     src/look_at_view.cpp
     src/orbital_view.cpp
+    src/orthogonal_projection.cpp
     src/perspective_projection.cpp    
+    src/symmetric_orthogonal_projection.cpp    
 )
 
 target_include_directories(

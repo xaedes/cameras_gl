@@ -11,6 +11,8 @@ namespace cameras_gl {
     {
     public:
 
+        // OrbitalView() = default;
+        OrbitalView(const OrbitalView& other) = default;
         OrbitalView(
             glm::vec3 target = glm::vec3(0,0,0), 
             glm::vec3 angles = glm::vec3(0,0,0), 
@@ -45,13 +47,13 @@ namespace cameras_gl {
         void update();
 
     protected:
-        glm::vec3 m_target;
-        glm::vec3 m_angles;
-        float m_distance;
+        glm::vec3 m_target{};
+        glm::vec3 m_angles{};
+        float m_distance=0;
 
-        glm::vec3 m_position;
+        glm::vec3 m_position{};
 
-        bool m_swapYZ;
+        bool m_swapYZ=false;
 
         glm::mat4 m_world_from_camera = glm::mat4(1);
         glm::mat4 m_camera_from_world = glm::mat4(1);

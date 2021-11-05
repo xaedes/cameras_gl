@@ -10,11 +10,6 @@ namespace cameras_gl {
     CameraProjectionInterface::~CameraProjectionInterface() 
     {}
     
-    glm::mat4 CameraProjectionInterface::matInverse() const
-    { 
-        return glm::inverse(mat()); 
-    }
-
     float CameraProjectionInterface::aspectRatio() const
     {
         glm::ivec2 vpsize = viewportSize();
